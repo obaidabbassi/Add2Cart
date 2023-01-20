@@ -1,0 +1,20 @@
+body{
+
+background: whitesmoke;
+}
+
+.dark{
+
+    background: #656565;
+
+}
+
+.btg{
+
+
+}
+
+.modal-body{
+    overflow-y: scroll;
+    max-height: calc(100vh - 210px);
+}
