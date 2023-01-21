@@ -55,7 +55,7 @@
                               <div class="card-body">
 
 
-                                  <form action="/additems" method="post" name="Form">
+                                  <form action="/additems" method="post" name="Form" enctype="multipart/form-data">
                                       <div class="mb-3">
                                           <label for="exampleInputEmail1" class="form-label">Product Name</label>
                                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="PName">
@@ -71,6 +71,12 @@
                                           <label for="exampleInputPassword" class="form-label">Product Description</label>
                                           <input type="text" class="form-control" id="exampleInputPassword" name="PDes">
                                       </div>
+                                      <div class="mb-3">
+                                          <label for="formFile" class="form-label">Choose Product Picture</label>
+                                          <input class="form-control" type="file" id="formFile" name="file">
+                                      </div>
+
+
 
                                       <button type="submit" class="btn btn-primary">Submit</button>
                                   </form>
@@ -119,7 +125,17 @@
                        <div class="col-md-4 mb-2">
 
                   <div class="card">
-                     <div class="card-header"><strong>Product Name : </strong><span class="text-success"> <%=p.getPName()%></span></div>
+                     <div class="card-header"><strong>Product Name : </strong><span class="text-success"> <%=p.getPName()%></span>
+                     
+                     
+                     <img  class="img-fluid" src="images/<%=p.getProductName()%>" width="300px" height="300px">
+                     
+                     
+                     
+                     
+                     </div>
+                      
+                      
                       <div class="card-body"><div class="card-title"><strong>Product Des : </strong><span><%=p.getPDes()%></span></div></div>
                       <div class="card-footer"><strong>Product Price : </strong><span><%=p.getPP()%></span></div>
                    <div class="container text-center d-flex justify-content-center mx-3 "style="grid-gap: 10px;">

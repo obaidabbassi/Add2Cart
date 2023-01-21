@@ -1,14 +1,17 @@
 package com.example.add2cart.Controllers;
 
 import com.example.add2cart.Entities.Products;
+import com.example.add2cart.ImageUploader;
 import com.example.add2cart.Repository.ProductRepo;
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,6 +23,8 @@ public class Controllers {
 
     @Autowired
     ProductRepo productRepo;
+    @Autowired
+    ImageUploader imageUploader;
     @GetMapping("/home")
     String home(){
 
@@ -43,7 +48,13 @@ public class Controllers {
     }
 
     @PostMapping(path = "/additems")
-    String add(@ModelAttribute Products products){
+    String add(@ModelAttribute Products products , @RequestParam("file") MultipartFile file){
+
+//uploading image
+        boolean upload = imageUploader.isUpload(file);
+
+       products.setProductName(file.getOriginalFilename());
+        System.out.println(upload);
 
         productRepo.save(products);
 return "About";

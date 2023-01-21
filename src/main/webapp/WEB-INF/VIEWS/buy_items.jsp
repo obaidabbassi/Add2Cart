@@ -48,7 +48,12 @@
 
 
     <div class="card mb-5">
-        <div class="card-header"><strong>Product Name : </strong><span class="text-success"><%=Buy_now.get().getPName()%></span></div>
+        <div class="card-header"><strong>Product Name : </strong><span class="text-success"><%=Buy_now.get().getPName()%></span>
+
+            <img  class="img-fluid" src="images/<%=Buy_now.get().getProductName()%>" width="300px" height="300px">
+
+
+        </div>
         <div class="card-body"><div class="card-title"><strong>Product Des : </strong><span><%=Buy_now.get().getPDes()%></span></div></div>
         <div class="card-footer"><strong>Product Price : </strong><span><%=Buy_now.get().getPP()%></span></div>
         <div class="card-footer"><strong>Product Quantity : </strong><span><input type="number" value="1" min="1" max="100"class="form-control"></span></div>

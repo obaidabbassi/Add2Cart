@@ -18,6 +18,15 @@ private int PID;
         return PID;
     }
 
+    public String getProductName() {
+        return ProductName;
+    }
+
+    public void setProductName(String productName) {
+        ProductName = productName;
+    }
+
+    private String ProductName;
     public void setPID(int PID) {
         this.PID = PID;
     }
