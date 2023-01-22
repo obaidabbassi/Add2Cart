@@ -48,7 +48,9 @@ public class Controllers {
     }
 
     @PostMapping(path = "/additems")
-    String add(@ModelAttribute Products products , @RequestParam("file") MultipartFile file){
+    String add(@ModelAttribute Products products , @RequestParam("file") MultipartFile file) throws InterruptedException {
+
+Thread.sleep(5000);
 
 //uploading image
         boolean upload = imageUploader.isUpload(file);
@@ -70,6 +72,18 @@ return "About";
 
 return "index";
     }
+
+@GetMapping("*")
+
+String notFound(){
+
+
+  return "notfound"     ;
+}
+
+
+
+
 
 
 

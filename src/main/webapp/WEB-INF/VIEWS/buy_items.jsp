@@ -13,12 +13,12 @@
     <title>Add to Cart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <jsp:include page="../../Boostrap/boostrap.jsp"/>
-    <jsp:include page="components/header.jsp"/>
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="js/index.js"></script>
-
+    <jsp:include page="../../Boostrap/boostrap.jsp"/>
+    <jsp:include page="components/header.jsp"/>
 </head>
 <body id="body">
 
@@ -43,67 +43,81 @@
 <h1 class="text-warning">Your Buying Details are</h1>
 
 </div>
+<div class="row">
+    <div class="col-md-4 offset-md-2 col-12">
 
-<div class="container">
+        <div class="container outer shadow p-3 mb-5 bg-body rounded">
 
 
-    <div class="card mb-5">
-        <div class="card-header"><strong>Product Name : </strong><span class="text-success"><%=Buy_now.get().getPName()%></span>
+            <div class="card mb-5">
+                <div class="card-header"><strong>Product Name : </strong><span class="text-success"><%=Buy_now.get().getPName()%></span><br>
 
-            <img  class="img-fluid" src="images/<%=Buy_now.get().getProductName()%>" width="300px" height="300px">
+                    <div class="container text-center">
+
+                        <img  class="img-fluid" src="images/<%=Buy_now.get().getProductName()%>" width="200px" height="200px">
+
+                    </div>
+
+
+
+                </div>
+                <div class="card-body"><div class="card-title"><strong>Product Des : </strong><span><%=Buy_now.get().getPDes()%></span></div></div>
+                <div class="card-footer"><strong>Product Price : </strong><span class="text-info">Rs <%=Buy_now.get().getPP()%></span></div>
+                <div class="card-footer"><strong>Product Quantity : </strong><span><input type="number" value="1" min="1" max="100"class="form-control"></span></div>
+
+
+                <div class="container text-center">
+
+                    <button class="btn btn-danger mt-2 mb-2 w-50"  id="checkout">Check out</button>
+
+
+
+
+
+                    <input type="hidden" name="productId" value="<%=Buy_now.get().getPID()%>">
+
+
+                </div>
+
+
+            </div>
+
+
+
 
 
         </div>
-        <div class="card-body"><div class="card-title"><strong>Product Des : </strong><span><%=Buy_now.get().getPDes()%></span></div></div>
-        <div class="card-footer"><strong>Product Price : </strong><span><%=Buy_now.get().getPP()%></span></div>
-        <div class="card-footer"><strong>Product Quantity : </strong><span><input type="number" value="1" min="1" max="100"class="form-control"></span></div>
-
-
-        <div class="container text-center">
-
-                <button class="btn btn-danger mt-2 mb-2 w-50"  id="checkout">Check out</button>
-
-
-
-
-
-                <input type="hidden" name="productId" value="<%=Buy_now.get().getPID()%>">
-
-
-        </div>
-
-
     </div>
 
 
+<div class="col-md-4 col-md-offset-2 col-12">
+    <div class="container  outer-2 accordian shadow p-3 mb-5 bg-body rounded" id="acc" style="display: none;">
 
 
-
-</div>
-
-<div class="container accordian " id="acc" style="display: none;">
+        <div class="accordion " id="accordionPanelsStayOpenExample">
 
 
-    <div class="accordion " id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                        <h4 class="text-normal">Check out details</h4>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                    <div class="accordion-body">
 
-
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                    <h4 class="text-normal">Check out details</h4>
-                </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                <div class="accordion-body">
-
-                    <h3>Your total bill is :<span id="bill" class="text-info"></span></h3>
-                    <button class="btn btn-outline-info">Pay Now</button>
+                        <h3>Your total bill is :<span id="bill" class="text-info"></span></h3>
+                        <button class="btn btn-outline-info">Pay Now</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
     </div>
 
-
+</div>
 
 </div>
 

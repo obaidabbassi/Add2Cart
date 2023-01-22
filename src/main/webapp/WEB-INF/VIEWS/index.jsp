@@ -55,7 +55,7 @@
                               <div class="card-body">
 
 
-                                  <form action="/additems" method="post" name="Form" enctype="multipart/form-data">
+                                  <form action="/additems" method="post" name="Form" enctype="multipart/form-data" id="form">
                                       <div class="mb-3">
                                           <label for="exampleInputEmail1" class="form-label">Product Name</label>
                                           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="PName">
@@ -78,9 +78,18 @@
 
 
 
-                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                      <button type="submit" class="btn btn-primary" id="add-product-btn">Submit</button>
                                   </form>
 
+                                <div class="container text-center">
+                                    <span class="text-success" id="msg"></span>
+                                </div>
+
+                                  <div class="d-flex justify-content-center" id="loader" >
+                                      <div class="spinner-border" role="status">
+                                          <span class="visually-hidden">Loading...</span>
+                                      </div>
+                                  </div>
 
 
 
@@ -99,6 +108,9 @@
       </div>
 
 
+
+<%--view items portion start --%>
+
 <div class="container mt-5">
     <div class="accordion" id="accordionExample5">
 
@@ -107,6 +119,7 @@
             <h2 class="accordion-header" id="headingThree1">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
                     <h5 class="text-success">View Products</h5>
+
                 </button>
             </h2>
             <div id="collapseThree1" class="accordion-collapse collapse" aria-labelledby="headingThree1" data-bs-parent="#accordionExample5">
@@ -114,7 +127,19 @@
                     <div class="container add-items-card">
 
 
-               <div class="row">
+<%--              implement search functionality here          --%>
+
+
+
+                       <div class="container mb-3 d-flex" style="gap: 1%;">
+                           <input type="search" name="search" class="form-control" placeholder="search products here" id="search-product">
+                           <button class="btn btn-outline-success" id="search">Search</button>
+                       </div>
+
+
+
+
+               <div class="row" >
 
                    <%
                        if (products!=null){
@@ -122,13 +147,16 @@
                        for (Products p : products) {
 %>
 
-                       <div class="col-md-4 mb-2">
+                       <div class="col-md-4 mb-2 product-col" >
 
-                  <div class="card">
+                  <div class="card shadow p-3 mb-5 bg-body rounded product-card" >
                      <div class="card-header"><strong>Product Name : </strong><span class="text-success"> <%=p.getPName()%></span>
                      
                      
-                     <img  class="img-fluid" src="images/<%=p.getProductName()%>" width="300px" height="300px">
+                     <div class="container text-center">
+
+                         <img  class="img-fluid" src="images/<%=p.getProductName()%>" width="100px" height="100px">
+                     </div>
                      
                      
                      
@@ -137,7 +165,7 @@
                       
                       
                       <div class="card-body"><div class="card-title"><strong>Product Des : </strong><span><%=p.getPDes()%></span></div></div>
-                      <div class="card-footer"><strong>Product Price : </strong><span><%=p.getPP()%></span></div>
+                      <div class="card-footer"><strong>Product Price : </strong><span class="text-info">Rs <%=p.getPP()%></span></div>
                    <div class="container text-center d-flex justify-content-center mx-3 "style="grid-gap: 10px;">
                        <form action="/id" method="post">
 
@@ -182,5 +210,8 @@
     </div>
 
 </div>
+
+
+
       </body>
       </html>
